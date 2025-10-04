@@ -35,6 +35,7 @@ def get_current_user(token: str=  Cookie(None, alias="access_token"),db : Sessio
         raise HTTPException(status_code=401, detail='Invalid token')
 
 
+
 @app.get('/')
 def test_connect(db:Session = Depends(get_db)):
         try:
@@ -185,3 +186,5 @@ def pending_task(status:str , db:Session=Depends(get_db),current_user : User=Dep
 def logout(response: Response):
     response.delete_cookie(key="access_token")
     return {"message": "Successfully logged out"}
+
+
